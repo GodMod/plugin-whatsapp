@@ -29,9 +29,9 @@ include_once($eqdkp_root_path.'common.php');
 
 
 /*+----------------------------------------------------------------------------
-  | localitembaseSettings
+  | WhatsappSettings
   +--------------------------------------------------------------------------*/
-class LocalItembaseSettings extends page_generic
+class WhatsappSettings extends page_generic
 {
   /**
    * __dependencies
@@ -49,14 +49,14 @@ class LocalItembaseSettings extends page_generic
   public function __construct()
   {
     // plugin installed?
-    if (!$this->pm->check('localitembase', PLUGIN_INSTALLED))
-      message_die($this->user->lang('lit_plugin_not_installed'));
+    if (!$this->pm->check('whatsapp', PLUGIN_INSTALLED))
+      message_die($this->user->lang('wa_plugin_not_installed'));
 
     $handler = array(
       'reset' => array('process' => 'reset', 'csrf' => true),
     );
 	
-	$this->user->check_auth('a_localitembase_settings');  
+	$this->user->check_auth('a_config_man');  
 	
     parent::__construct(null, $handler);
 
@@ -205,6 +205,6 @@ class LocalItembaseSettings extends page_generic
   
 }
 
-registry::register('LocalItembaseSettings');
+registry::register('WhatsappSettings');
 
 ?>
