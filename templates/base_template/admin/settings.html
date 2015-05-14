@@ -1,0 +1,81 @@
+<div class="breadcrumb-container">
+	<ul class="breamcrumb">
+		<li><a href="{EQDKP_CONTROLLER_PATH}{SID}" title="{L_home}"><i class="fa fa-home"></i></a></li>
+		<li><a href="{EQDKP_ROOT_PATH}admin/{SID}">{L_menu_admin_panel}</a>
+		<li class="current"><a>{L_whatsapp}: {L_settings}</a></li>
+	</ul>
+	<div class="clear"></div>
+</div>
+
+<div class="contentHeader">
+	<h1 class="contentTitle">{L_settings}</h1>
+</div>
+
+<!-- IF S_STEP1 -->
+<div class="infobox infobox-large infobox-red clearfix">
+	<i class="fa fa-exclamation-triangle fa-4x pull-left"></i> {L_wa_settings_warning}
+</div>
+
+<form name="mc_settings" action="{ACTION}" method="post" id="mc_settings">
+<div class="infobox infobox-large infobox-blue clearfix">
+	<i class="fa fa-info-circle fa-4x pull-left"></i> {L_wa_settings_info}
+</div>
+
+<fieldset class="settings mediumsettings">
+		<legend>{L_wa_phonenumber}</legend>
+
+		<dl>
+			<dt><label>{L_wa_phonenumber}</label><br /><span>{L_wa_phonenumber_help}</span></dt>
+			<dd><input type="tel" name="phone" placeholder="49150123456" required size="40" pattern="[0-9]{6,}" /></dd>
+		</dl>
+		<dl>
+			<dt><label>{L_wa_default_country}</label><br /><span>{L_wa_default_country_help}</span></dt>
+			<dd><input type="tel" name="default_country" placeholder="49" required size="3"  pattern="[0-9]{2,}" /></dd>
+		</dl>
+	</fieldset>
+
+<div class="contentFooter">
+	<button class="mainoption" type="submit" name="step1" ><i class="fa fa-check"></i> {L_proceed}</button>
+</div>
+{CSRF_TOKEN}
+</form>
+<!-- ENDIF -->
+
+<!-- IF S_STEP2 -->
+<form name="mc_settings" action="{ACTION}" method="post" id="mc_settings">
+
+<fieldset class="settings mediumsettings">
+		<legend>{L_wa_phonecode}</legend>
+
+		<dl>
+			<dt><label>{L_wa_phonecode}</label><br /><span>{L_wa_phonecode_help}</span></dt>
+			<dd><input type="text" name="code" placeholder="xxxxxx" required size="10" /></dd>
+		</dl>
+	</fieldset>
+
+<div class="contentFooter">
+	<button class="mainoption" type="submit" name="step2" ><i class="fa fa-check"></i> {L_proceed}</button>
+</div>
+{CSRF_TOKEN}
+</form>
+<!-- ENDIF -->
+
+<!-- IF S_CONFIGURED -->
+<form name="mc_settings" action="{ACTION}" method="post" id="mc_settings">
+<fieldset class="settings mediumsettings">
+	<dl>
+		<dt><label>{L_wa_phonenumber}</label></dt>
+		<dd>{WA_PHONENUMBER}</dd>
+	</dl>
+	<dl>
+		<dt><label>{L_wa_default_country}</label></dt>
+		<dd>{WA_DEFAULT_COUNTRY}</dd>
+	</dl>
+</fieldset>
+
+<div class="contentFooter">
+	<button class="mainoption" type="submit" name="reset" ><i class="fa fa-trash-o"></i> {L_reset}</button>
+</div>
+{CSRF_TOKEN}
+</form>
+<!-- ENDIF -->
